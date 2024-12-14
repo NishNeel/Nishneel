@@ -1,0 +1,29 @@
+package BaseClass;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+
+public class BaseClass {
+	
+public static WebDriver driver;
+	
+    @BeforeTest
+	public void driverIntialization() {
+    	System.setProperty("webdriver.chrome.driver", "C:\\Users\\admin\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe");
+    	driver = new ChromeDriver();
+		driver.get("https://facebook.com/login.php/");
+		driver.manage().window().maximize();
+		driver.manage().deleteAllCookies();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	}
+	
+    @AfterTest
+	public void quit() {
+		driver.quit();
+	}
+
+}

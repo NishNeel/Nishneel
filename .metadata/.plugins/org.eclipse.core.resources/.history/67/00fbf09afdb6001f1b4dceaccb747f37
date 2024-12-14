@@ -1,0 +1,25 @@
+package BaseClass;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class BaseClass {
+	
+public static WebDriver driver;
+	
+    @BeforeTest
+	public void driverIntialization() {
+		driver = new ChromeDriver();
+		driver.get("www.facebook.com");
+		driver.manage().window().maximize();
+		driver.manage().deleteAllCookies();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	}
+	
+	public void quit() {
+		driver.quit();
+	}
+
+}
